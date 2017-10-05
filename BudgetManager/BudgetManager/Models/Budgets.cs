@@ -29,5 +29,6 @@ namespace BudgetManager.Models
         [Display(Name = "Interval")]
         [Required(ErrorMessage = "Du skal anføre interval")]
         public int Interval { get; set; }
+
     }
 }
