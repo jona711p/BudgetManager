@@ -11,6 +11,7 @@ namespace BudgetManager.DB
 {
     public class DB
     {
+        private SqlConnection connection = null;
         private SqlConnection ConnectToDB(SqlConnection connection)
         {
             try
@@ -49,21 +50,18 @@ namespace BudgetManager.DB
 
         public List<Budgets> GetBudgets()
         {
-            SqlConnection connection = null;
             connection = ConnectToDB(connection);
 
-            DataTable budgetTable = new DataTable();
-            List<Budgets> budgets = new List<Budgets>();
+            DataTable budgetsTable = new DataTable();
+            List<Budgets> budgetsList = new List<Budgets>();
 
             SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Budgets", connection);
 
-            connection.Open();
-            adapter.Fill(budgetTable);
-            connection.Close();
+            adapter.Fill(budgetsTable);
 
-            foreach (DataRow budget in budgetTable.Rows)
+            foreach (DataRow budget in budgetsTable.Rows)
             {
-                budgets.Add(
+                budgetsList.Add(
                     new Budgets
                     {
                         Id = int.Parse(budget["Id"].ToString()),
@@ -75,21 +73,20 @@ namespace BudgetManager.DB
                     });
             }
 
-            return budgets;
+            return budgetsList;
         }
 
-        public void Create(Budgets inputBudget)
+        public void CreateBudget(Budgets inputBudget)
         {
-            SqlConnection connection = null;
             connection = ConnectToDB(connection);
             
             SqlCommand command = new SqlCommand("spCreateBudget", connection);
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.Add("@BudgetName", SqlDbType.NVarChar).Value = inputBudget.BudgetName;
-            command.Parameters.Add("@Visibility", SqlDbType.Bit).Value = inputBudget.Visibility;
             command.Parameters.Add("@Purpose", SqlDbType.NVarChar).Value = inputBudget.Purpose;
             command.Parameters.Add("@FiscalYear", SqlDbType.Int).Value = inputBudget.FiscalYear;
+            command.Parameters.Add("@Visibility", SqlDbType.Bit).Value = inputBudget.Visibility;
             command.Parameters.Add("@Interval", SqlDbType.Int).Value = inputBudget.Interval;
 
             command.ExecuteNonQuery();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BudgetManager.Models;
 
 namespace BudgetManager.Controllers
 {
@@ -19,7 +20,7 @@ namespace BudgetManager.Controllers
         // GET: Home/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(db.GetBudgets().Find(budget => budget.Id == id));
         }
 
         // GET: Home/Create
@@ -30,11 +31,11 @@ namespace BudgetManager.Controllers
 
         // POST: Home/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Budgets inputBudget)
         {
             try
             {
-                // TODO: Add insert logic here
+                db.CreateBudget(inputBudget);
 
                 return RedirectToAction("Index");
             }
