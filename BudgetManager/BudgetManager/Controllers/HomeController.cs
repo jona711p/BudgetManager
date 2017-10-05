@@ -8,10 +8,12 @@ namespace BudgetManager.Controllers
 {
     public class HomeController : Controller
     {
+        DB.DB db = new DB.DB();
+
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            return View(db.GetBudgets());
         }
 
         // GET: Home/Details/5
