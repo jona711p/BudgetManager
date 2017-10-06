@@ -1,7 +1,7 @@
 ﻿@model BudgetManager.Models.Budgets
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Opret Budget";
 }
 
 <h2>Opret nyt Budget</h2>
@@ -57,7 +57,8 @@
                     listItems.Add(new SelectListItem
                     {
                         Text = "Måned",
-                        Value = "1"
+                        Value = "1",
+                        Selected = true
                     });
 
                     listItems.Add(new SelectListItem
@@ -78,6 +79,7 @@
                         Value = "4"
                     });
                 }
+
                 @Html.DropDownListFor(model => model.Interval, listItems, "-- Vælg Interval --")
 
                 @Html.ValidationMessageFor(model => model.Interval, "", new { @class = "text-danger" })

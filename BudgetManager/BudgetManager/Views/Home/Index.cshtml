@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BudgetManager.Models.Budgets>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Budget Manager";
 }
 
 <h2>Budgetter:</h2>
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.Interval)
         </td>
         <td>
-            @Html.ActionLink("Redigere", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detaljer", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Slet", "Delete", new { id=item.Id })
+            @*@Html.ActionLink("Redigere", "Edit", new { id=item.Id }) |*@
+            @Html.ActionLink("Detaljer", "Details", new { id=item.Id }) @*|*@
+            @*@Html.ActionLink("Slet", "Delete", new { id=item.Id })*@
         </td>
     </tr>
 }
