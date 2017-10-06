@@ -9,6 +9,7 @@ using BudgetManager.Models;
 
 namespace BudgetManager.DB
 {
+
     public class DB
     {
         private SqlConnection connection = null;
