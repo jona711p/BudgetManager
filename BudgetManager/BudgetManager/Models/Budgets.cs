@@ -22,6 +22,7 @@ namespace BudgetManager.Models
 
         [Display(Name = "Regnskabsår")]
         [Required(ErrorMessage = "Du skal anføre et regnskabsår")]
+        [StringLength(4, MinimumLength = 4, ErrorMessage = "Regnskabsår skal være på 4 tegn")]
         [Range(1000, 9999)]
         public int FiscalYear { get; set; }
 
