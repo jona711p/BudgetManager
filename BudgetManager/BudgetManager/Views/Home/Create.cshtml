@@ -59,7 +59,6 @@
                     {
                         Text = "Måned",
                         Value = "1",
-                        Selected = true
                     });
 
                     listItems.Add(new SelectListItem
@@ -80,16 +79,14 @@
                         Value = "4"
                     });
                 }
-
                 @Html.DropDownListFor(model => model.Interval, listItems, "-- Vælg Interval --")
-
                 @Html.ValidationMessageFor(model => model.Interval, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Opret" class="btn btn-default" />
             </div>
         </div>
     </div>
