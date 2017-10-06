@@ -7,7 +7,7 @@ using BudgetManager.Models;
 
 namespace BudgetManager.Controllers
 {
-    public class HomeController : Controller
+    public class BudgetsController : Controller
     {
         DB.DB db = new DB.DB();
 
