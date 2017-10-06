@@ -52,37 +52,37 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Interval, htmlAttributes: new { @class = "control-label col-md-2" })
+            @{
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Måned",
+                    Value = "1",
+                });
+
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Kvartal",
+                    Value = "2",
+                });
+
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Halvår",
+                    Value = "3"
+                });
+
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Helt år",
+                    Value = "4"
+                });
+            }
             <div class="col-md-10">
-                @{
-                    List<SelectListItem> listItems = new List<SelectListItem>();
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = "Måned",
-                        Value = "1",
-                    });
-
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = "Kvartal",
-                        Value = "2",
-                    });
-
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = "Halvår",
-                        Value = "3"
-                    });
-
-                    listItems.Add(new SelectListItem
-                    {
-                        Text = "Helt år",
-                        Value = "4"
-                    });
-                }
                 @Html.DropDownListFor(model => model.Interval, listItems, "-- Vælg Interval --")
                 @Html.ValidationMessageFor(model => model.Interval, "", new { @class = "text-danger" })
             </div>
-        </div>
+    </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -90,7 +90,7 @@
             </div>
         </div>
     </div>
-                    }
+                }
 
 <div>
     @Html.ActionLink("Tilbage til Forsiden", "Index")
